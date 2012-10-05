@@ -8,5 +8,6 @@ And /^I load the application$/ do
 end
 
 And /^the quickstart will report readiness$/ do
+  $logger.info @app.html_parse.css(".notice:not(.success)"
   assert_equal 0, @app.html_parse.css(".notice:not(.success)").size
 end
