@@ -1,8 +1,9 @@
+require 'open-uri'
 require 'rubygems'
 require 'nokogiri'
 
 And /^I load the application$/ do 
-  parse = Nokogiri::HTML("http://#{@app.name}-#{@account.domain}.dev.rhcloud.com")
+  parse = Nokogiri::HTML(open("http://#{@app.name}-#{@account.domain}.dev.rhcloud.com"))
   @app.instance_variable_set(:@html_parse, parse)
   @app.instance_eval('def html_parse; @html_parse; end')
 end
